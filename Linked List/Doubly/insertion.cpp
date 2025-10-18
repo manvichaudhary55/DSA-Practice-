@@ -98,17 +98,19 @@ Node* insertbeforeKth(Node* head,int k,int data){
     if(head == NULL || k<=0 || k>len){
         return head;
     }
-    else if(head->next == NULL && k == 1){
+    else if(k == 1){
         head = insertHead(head,data);
         return head;
     }
     else{
         Node* temp = head;
-        int i = 0;
-        while(temp!= NULL && i<k-1 ){
+        int i = 1;
+        while(temp!= NULL && i<k){
             temp = temp->next;
             i++;
         }
+
+
         Node* before = temp->prev;
         Node* newNode = new Node(data);
 

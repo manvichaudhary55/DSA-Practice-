@@ -109,89 +109,6 @@ Node* deleteAtValue(Node* head,int val){
     return head;
 }
 
-Node* insertAtTail(Node* head,int data){
-    if(head == NULL){
-        Node* newNode = new Node(data);
-        head = newNode;
-    }
-
-    Node* temp = head;
-    //traverse to the last node 
-    while(temp->next!=NULL){
-        temp = temp->next;
-    }
-
-    Node* newNode =  new Node(data);
-    temp->next = newNode;
-
-    return head;
-}
-
-Node* insertAtPosition(Node* head,int data,int k){
-    if(head == NULL){
-        if(k == 1){ 
-            head = new Node(data);
-            return head; 
-        }
-        //if not for the first position 
-        else{
-            return head;
-        }
-    }
-
-    if(k==1){
-        head = insertAtHead(head,data);
-        return head;
-    }
-
-    int count = 0;
-    Node* temp = head;
-
-    while(temp!=NULL){
-        count++;
-
-        if(count == k-1){
-            Node* newNode = new Node(data);
-            newNode->next = temp->next;
-            temp->next = newNode;
-            break;
-        }
-        else{
-        temp = temp->next;
-        }
-    }
-    return head;
-}
-
-Node* insertBeforeVal(Node* head,int data,int val){
-    if(head == NULL){
-        //How the hell is the val given then 
-        return NULL;
-    }
-
-    if(head->data == val){
-        head = insertAtHead(head,data);
-        return head;
-    }
-
-
-    Node* temp = head;
-
-    while(temp->next!=NULL){
-
-        if(temp->next->data == val){
-            Node* newNode = new Node(data);
-            newNode->next = temp->next;
-            temp->next = newNode;
-            break;
-        }
-        else{
-        temp = temp->next;
-        }
-    }
-    return head;
-}
-
 void print(Node* Head){
 
     Node* temp = Head;
@@ -222,14 +139,7 @@ int main(){
     // head = deleteAtPosition(head,3);
     // print(head);
 
-    // head = deleteAtValue(head,40);
-    // print(head);
-
-
-    // head = insertAtTail(head,60);
-    // print(head);
-
-    head = insertAtPosition(head ,100,3);
+    head = deleteAtValue(head,40);
     print(head);
     return 0;
 }
